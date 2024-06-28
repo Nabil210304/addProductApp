@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_home"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD PRODUCT APP"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="47dp"/>
+
+    <ImageButton
+        android:id="@+id/btnTambahData"
+        android:layout_width="193dp"
+        android:layout_height="193dp"
+        android:src="@drawable/btnproduct"
+        android:textColor="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/btnTampilkanData"
+        android:layout_width="193dp"
+        android:layout_height="193dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/btn_lists"/>
+
+</LinearLayout>
