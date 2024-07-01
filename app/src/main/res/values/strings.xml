@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">addProductApp</string>
+
+    <string-array name="product_types">
+        <item>Fashion</item>
+        <item>Sembako</item>
+        <item>Elektronik</item>
+        <item>Handphone</item>
+        <item>Book</item>
+        <item>Laptop</item>
+    </string-array>
+
 </resources>

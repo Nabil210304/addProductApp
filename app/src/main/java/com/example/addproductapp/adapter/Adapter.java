@@ -122,7 +122,8 @@ public class Adapter extends BaseAdapter implements Filterable {
 
             for (int i = 0; i < count; i++) {
                 filterableString = list.get(i).getNama();
-                if (filterableString.toLowerCase().contains(filterString)) {
+                if (filterableString.toLowerCase().contains(filterString) ||
+                        list.get(i).getJenis().toLowerCase().contains(filterString)) {
                     nlist.add(list.get(i));
                 }
             }

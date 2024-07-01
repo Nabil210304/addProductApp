@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +31,7 @@ public class DisplayDataActivity extends AppCompatActivity {
     Helper db;
     ImageButton btnBack;
     SearchView searchView;
+    Spinner spinnerFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,33 @@ public class DisplayDataActivity extends AppCompatActivity {
         listView = findViewById(R.id.list_item);
         btnBack = findViewById(R.id.btn_back);
         searchView = findViewById(R.id.search_view);
+        spinnerFilter = findViewById(R.id.spinner_filter);
 
         adapter = new Adapter(this, lists);
         listView.setAdapter(adapter);
+
+        // Set up the Spinner for filtering
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.product_types, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFilter.setAdapter(spinnerAdapter);
+
+        spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedType = parent.getItemAtPosition(position).toString();
+                if (!selectedType.equals("All")) {
+                    adapter.getFilter().filter(selectedType);
+                } else {
+                    adapter.getFilter().filter("");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
